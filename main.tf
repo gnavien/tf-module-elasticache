@@ -41,9 +41,15 @@ resource "aws_elasticache_replication_group" "main" {
 
   num_node_groups         = var.num_node_groups #2
   replicas_per_node_group = var.replicas_per_node_group #1
-  parameter_group_name    = "default.redis6.x.cluster.on"
+  parameter_group_name    = var.parameter_group_name #"default.redis6.x.cluster.on"
   security_group_ids      = [aws_security_group.main.id]
   kms_key_id              = var.kms_key_arn
+  at_rest_encryption_enabled = true
+  engine = var.engine
+  engine_version = var.engine_version
+
+  cache_subnet_group_name = aws_elasticache_subnet_group.main.name
+
 
 }
 

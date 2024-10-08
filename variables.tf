@@ -13,3 +13,4 @@ variable "port" {
 variable "vpc_id" {}
 variable "num_node_groups" {}
 variable "replicas_per_node_group" {}
+variable "parameter_group_name" {}
