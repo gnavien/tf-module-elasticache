@@ -31,25 +31,6 @@ resource "aws_security_group" "main" {
 # Here we are going with redis database for elasticache
 
 
-#resource "aws_elasticache_replication_group" "main" {
-#  replication_group_id          = "${var.component}-${var.env}"
-#  description                   = "${var.component}-${var.env}"
-#  node_type                     = var.node_type # "cache.t2.small"
-#  port                          = var.port  #6379
-#  automatic_failover_enabled    = true
-#  # When you have a cluster in a 3 node, only one will be primary and the rest will be secondary nodes. Only 1 node will be doing the write operation and the rest will be doing read operation.
-#
-#  num_node_groups         = var.num_node_groups #2
-#  replicas_per_node_group = var.replicas_per_node_group #1
-#  parameter_group_name    = var.parameter_group_name #"default.redis6.x.cluster.on"
-#  security_group_ids      = [aws_security_group.main.id]
-#  kms_key_id              = var.kms_key_arn
-#  at_rest_encryption_enabled = true
-#  engine = var.engine
-#  engine_version = var.engine_version
-#  cache_subnet_group_name = aws_elasticache_subnet_group.main.name
-#
-#}
 
 resource "aws_elasticache_cluster" "instance" {
   cluster_id           = "${var.component}-${var.env}-instance"
