@@ -34,6 +34,7 @@ resource "aws_security_group" "main" {
 resource "aws_elasticache_replication_group" "main" {
   replication_group_id          = "${var.component}-${var.env}"
   replication_group_description = "${var.component}-${var.env}"
+  description = "${var.component}-${var.env}"
   node_type                     = var.node_type # "cache.t2.small"
   port                          = var.port  #6379
   automatic_failover_enabled    = true
@@ -47,9 +48,7 @@ resource "aws_elasticache_replication_group" "main" {
   at_rest_encryption_enabled = true
   engine = var.engine
   engine_version = var.engine_version
-
-  cache_subnet_group_name = aws_elasticache_subnet_group.main.name
-
+ # cache_subnet_group_name = aws_elasticache_subnet_group.main.name
 
 }
 
